@@ -1,0 +1,27 @@
+{
+  "name": "newsApp",
+  "version": "1.0.0",
+  "description": "News model",
+  "main": "app.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "author": "Saurav Goyal",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^3.2.3",
+    "express": "^4.17.1",
+    "mariadb": "^2.5.2",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
