@@ -177,7 +177,7 @@ app.post("/updateCreateUserProfile", async (req, res) => {
           new Date(body.dob)
         )},birth_time=${mysql.escape(body.birth_time)},gender=${mysql.escape(
           body.gender
-        )}`;
+        )} where id=${mysql.escape(userId)}`;
       }
       connection.query(query2, async (err, data) => {
         if (err) {
