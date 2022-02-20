@@ -80,7 +80,7 @@ app.get("/getUserProfile", async (req, res) => {
     } else {
       return res.status(200).json({
         success: true,
-        data: dataa,
+        data: result,
       });
     }
   });
@@ -165,15 +165,19 @@ app.post("/updateCreateUserProfile", async (req, res) => {
         ];
         query2 = `Insert into user (username,firstname,lastname,email,mobile,profileImage,marital_status,language,dob,birth_time,gender) Values (${replacements}) `;
       } else {
-        query2 = `Update user set firstname=${firstname},lastname=${lastname},mobile=${
+        query2 = `Update user set firstname=${mysql.escape(
+          firstname
+        )},lastname=${mysql.escape(lastname)},mobile=${mysql.escape(
           body.mobile
-        },email=${body.email},profileImage=${
+        )},email=${mysql.escape(body.email)},profileImage=${mysql.escape(
           body.profileImage
-        },marital_status=${body.marital_status},language=${
-          body.language
-        },dob=${new Date(body.dob)},birth_time=${body.birth_time},gender=${
+        )},marital_status=${mysql.escape(
+          body.marital_status
+        )},language=${mysql.escape(body.language)},dob=${mysql.escape(
+          new Date(body.dob)
+        )},birth_time=${mysql.escape(body.birth_time)},gender=${mysql.escape(
           body.gender
-        }`;
+        )}`;
       }
       connection.query(query2, async (err, data) => {
         if (err) {
